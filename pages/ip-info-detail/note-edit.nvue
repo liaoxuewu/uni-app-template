@@ -1,0 +1,11 @@
+<template>
+  <view>1111111</view>
+</template>
+
+<script>
+  export default {
+    name: 'note-edit.nvue'
+  }
+</script>
+
+<style scoped></style>

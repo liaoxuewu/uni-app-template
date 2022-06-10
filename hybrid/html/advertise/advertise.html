@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>广告启动页</title>
+    <link rel="stylesheet" href="../css/advertise.css" />
+    <!-- uni 的 SDK -->
+    <script type="text/javascript" src="../js/webView.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="con">
+        <div class="con-start-page">
+          <img id="img" src="../imgs/start_page.png" />
+        </div>
+        <div class="con-text">
+          <div>专业</div>
+          <div>·</div>
+          <div>专注</div>
+          <div>·</div>
+          <div>专攻</div>
+        </div>
+        <div class="con-company-logo">
+          <img id="img1" src="../imgs/company_logo.png" />
+        </div>
+      </div>
+      <div class="btn" id="timer">
+        <div id="info">跳过</div>
+        <div class="circleProgress_wrapper btn">
+          <div class="wrapper right">
+            <div class="circleProgress rightcircle"></div>
+          </div>
+          <div class="wrapper left">
+            <div class="circleProgress leftcircle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    console.log(window.screen.width, window.screen.height)
+    document.addEventListener(
+      'DOMContentLoaded',
+      function () {
+        // let abc = random(1, 5);
+        // console.log(abc)
+        // document.getElementById("img").src = "../imgs/start_page.png";
+      },
+      false
+    )
+
+    document.addEventListener('UniAppJSBridgeReady', function () {
+      document.querySelector('.btn').addEventListener('click', function (e) {
+        if (e.isTrusted) {
+          plus.webview.currentWebview().close()
+        }
+      })
+    })
+
+    function random(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min
+    }
+  </script>
+</html>

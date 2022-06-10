@@ -1,0 +1,123 @@
+{
+  "easycom": {
+    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+  },
+  "pages": [
+    // pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/login/login",
+      "style": {
+        // "topWindow": true, // 顶部不显示
+        // "leftWindow": true,
+        "navigationBarTitleText": ""
+        // 开启下拉刷新
+        // "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/ip-info-main/ip-info-main",
+      "style": {
+        //				"app-plus": {
+        //					"subNVues":[{
+        //						"id": "note-edit", // 唯一标识
+        //						"path": "pages/ip-info-detail/note-edit", // 页面路径
+        //						/*"type": "popup",  这里不需要*/
+        //						"style": {
+        //							"position": "absolute",
+        //							"dock": "right",
+        //							"width": "100rpx",
+        //							"height": "150rpx",
+        //							"background": "red"
+        //						}
+        //					}]
+        //				},
+        // "topWindow": true, // 顶部不显示
+        // "leftWindow": true,
+        "navigationBarTitleText": "",
+        // 开启下拉刷新
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/ip-info-main/components/ip-info-home",
+      "style": {
+        "navigationBarTitleText": ""
+        // 开启下拉刷新
+        // "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/ip-info-note/ip-info-note",
+      "style": {
+        "navigationBarTitleText": "快记",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/ip-message/ip-message",
+      "style": {
+        "navigationBarTitleText": "消息",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/ip-system/ip-system",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/ip-info-detail/ip-info-detail",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/404/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "components/uni-note-edit/uni-note-edit",
+      // 手写板的路径
+      "style": {
+        "navigationBarTitleText": "xxx",
+        "disableScroll": true,
+        "app-plus": {
+          "bounce": "none"
+        }
+      }
+    }
+    // 在手写板页面设置disableScroll和bounce 防止ios有回弹效果
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom",
+    "rpxCalcMaxDeviceWidth": 99999,
+    "dynamicRpx": true,
+    "pageOrientation": "landscape",
+    "rpxCalcIncludeWidth": 750
+  },
+  "splashscreen": {
+    "waiting": false,
+    "alwaysShowBeforeRender": false,
+    "autoclose": false,
+    "delay": 0
+  }
+}
+// "leftWindow": {
+// 	"path": "windows/left-window",
+// 	"style": {
+// 		//  "height": "60px",
+// 	},
+// 	"matchMedia": {
+// 		"minWidth": 0
+// 	},
+// }
