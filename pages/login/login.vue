@@ -1,25 +1,5 @@
 <template>
   <view class="login-wrap">
-    <image class="company-logo" src="@/static/company_logo.png"></image>
-    <image class="login-bg uni-content-right" src="@/static/login_bg.png"></image>
-    <view class="login-describe-wrap">
-      <image class="login-bg1" src="@/static/login_bg1.png"></image>
-      <view class="login-describe">
-        <view class="login-describe-text">
-          汇聚
-          <text style="font-size: 22rpx; color: #0844ff">100+</text>
-          优秀开发者；
-        </view>
-        <view class="login-describe-text">
-          <text style="font-size: 22rpx; color: #21bc5d">500+</text>
-          医院认可；
-        </view>
-        <view class="login-describe-text">
-          服务超
-          <text style="font-size: 22rpx; color: #fc8e03">20000+</text>
-          病房！
-        </view>
-      </view>
     </view>
     <form class="login-form">
       <!-- 标题 -->

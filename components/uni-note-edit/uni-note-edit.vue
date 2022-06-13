@@ -1,5 +1,5 @@
 <!--
- * @Description: 快记编辑
+ * @Description: 编辑
  * @Author liaoxuewu
  * @create 2022/5/18 11:07
  -->
@@ -22,38 +22,6 @@
         :isShowMask.sync="isShowMask"
         @recordConfirm="recordConfirm"
       ></uni-audio-record>
-      <view class="uni-note-top">
-        <view class="uni-note-top-user">
-          <view>
-            <image class="user-avatar" :src="'../../static/' + personInfo.avatarName + '.png'"></image>
-            {{ personInfo.patiname }}
-            <text class="user-info-icon user-icon-gender iconfont" :class="personInfo.genderIcon" style="margin-right: 10rpx"></text>
-            <text>{{ personInfo.age }}岁</text>
-          </view>
-          <view>
-            <text class="user-info-icon user-icon-depart iconfont icon-huxike"></text>
-            <text>{{ personInfo.deptname }}</text>
-          </view>
-          <view>
-            <text class="user-info-icon user-icon-hospital iconfont icon-yiyuan1"></text>
-            <text>No.{{ personInfo.patientno }}</text>
-          </view>
-          <view>
-            <text class="user-info-icon user-icon-bed iconfont icon-danrenchuang"></text>
-            <text>{{ personInfo.bedNo }}</text>
-          </view>
-          <text v-if="isShowZoomButton" @click="$emit('update:isShowNote', false)">缩</text>
-        </view>
-        <view class="uni-note-top-operate">
-          <view class="uni-note-operate-content">
-            <text class="iconfont icon-xiangji" data-method="insertImg" @tap="edit($event, '')"></text>
-            <text class="iconfont icon-shipin" data-method="insertVideo" @tap="edit($event, '')"></text>
-            <text class="iconfont icon-yuyin" data-method="insertAudio" @click="showRecord"></text>
-            <text class="iconfont icon-wenzi" data-method="insertText" @tap="edit($event, '')"></text>
-            <text class="iconfont icon-bianji_2" @click="showSignature"></text>
-          </view>
-        </view>
-      </view>
       <scroll-view :scroll-top="scrollTop" scroll-y :style="`height:${rightContentScrollH}px`">
         <mp-html
             ref="article"
