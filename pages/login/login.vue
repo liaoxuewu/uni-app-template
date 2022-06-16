@@ -27,7 +27,7 @@
               autocomplete="on"
               name="hospital"
               maxlength="20"
-              placeholder="请选择院校"
+              placeholder="请选择"
               v-model="hospital"
             />
             <image class="select-img" :src="tabSelectImg"></image>
@@ -57,8 +57,8 @@
         title: '登录账号',
         username: '', //用户名
         password: '', //密码
-        hospitals: [], // 所有医院
-        hospitalNames: [], // 所有医院名称
+        hospitals: [],
+        hospitalNames: [],
         hospital: '',
         hospitalTypeIndex: 0,
         hospitalArrayType: '请选择',
@@ -83,7 +83,7 @@
     },
     mounted() {
       if (this.baseUrl) {
-        this.getHospital(this.baseUrl)
+        this.getList(this.baseUrl)
         this.serveAddress = this.baseUrl
       }
     },
@@ -94,11 +94,11 @@
         removeBaseUrl: 'user/removeBaseUrl'
       }),
       /**
-       * @description: 获取医院列表
+       * @description: 获取列表
        */
-      getHospital(url) {
+      getList(url) {
         api
-          .getHospitalList({
+          .getList({
             baseUrl: url
           })
           .then(
@@ -120,7 +120,7 @@
             err => {
               console.log(err)
               uni.showToast({
-                title: '未获取到院区列表',
+                title: '未获取列表',
                 icon: 'none',
                 duration: 2000
               })
@@ -131,8 +131,6 @@
        * @description: 点击登陆
        * @param usercode 用户名
        * @param password 密码
-       * @param organCode 医院代码
-       * @param hossn 医院sn
        * @return {*}
        */
       login() {
@@ -164,9 +162,7 @@
         })
         const baseParams = {
           usercode: this.username,
-          password: this.password,
-          organCode: this.hospitalArrayType.hosCode,
-          hossn: this.hospitalArrayType.hossn
+          password: this.password
         }
         api
           .login({
@@ -176,8 +172,6 @@
           .then(
             res => {
               if (res.data.code === '200' && res.data.data) {
-                res.data.data.hospitalCode = this.hospitalArrayType.hosCode
-                res.data.data.hospitalSn = this.hospitalArrayType.hossn
                 this.setUserInfo(res.data.data)
                 uni.showToast({
                   title: '登录成功！',
@@ -223,7 +217,7 @@
           title: '保存成功！',
           duration: 2000
         })
-        this.getHospital(url)
+        this.getList(url)
         this.isShowLogin = true
       },
       onCancelHospital() {

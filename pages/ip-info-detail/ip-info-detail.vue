@@ -3,7 +3,7 @@
     <view id="topContent" class="uni-content-top">
       <view class="page-title">
         <text class="iconfont icon-shenfen" style="vertical-align: middle"></text>
-        <text>患者详情</text>
+        <text>详情</text>
       </view>
       <view style="padding: 6rpx 6rpx 0 6rpx">
         <uni-person-info :personInfo="personInfo"></uni-person-info>
@@ -54,7 +54,7 @@
       return {
         topData: {
           // 顶部标题
-          name: '神经外科'
+          name: ''
         },
         viewDataTitle: {
           // 顶部标题容器
@@ -80,7 +80,7 @@
           this.selectClass = 'outside-circle outside-circle1 outside-circle2'
         }
       },
-      // 快记窗口的显示隐藏
+      // 窗口的显示隐藏
       isShowNote(val) {
         // #ifdef APP-PLUS
         const webView = this.$refs.medicalRecord.currentWebview.children()[0]
@@ -111,13 +111,7 @@
           mask: true
         })
         try {
-          const params = {
-            inpatientno: this.personInfo.inpatientno,
-            hospcode: this.userInfo.hospitalCode
-          }
-          const params1 = {
-            inpatientno: this.personInfo.inpatientno
-          }
+          const params = {}
           await Promise.all([])
         } catch (e) {
           uni.showToast({
@@ -130,7 +124,7 @@
         }
       },
       /**
-       * 切换患者信息页面
+       * 切换页面
        */
       onClickItem(index) {
         if (this.current != index) {
@@ -144,12 +138,6 @@
       backToMain() {
         this.$emit('update:isShowHome', true)
       },
-      /**
-       * 显示快记
-       */
-      showNote() {
-        this.isShowNote = true
-      }
     }
   }
 </script>
@@ -267,30 +255,6 @@
         color: #fff;
         font-size: 12rpx;
         margin-right: 5rpx;
-      }
-
-      .icon-bingli {
-        background: #085cfe;
-      }
-
-      .icon-yisheng {
-        background: #fc970c;
-      }
-
-      .icon-tijianke {
-        background: #207c4d;
-      }
-
-      .icon-jiance {
-        background: #f53840;
-      }
-
-      .icon-wendu {
-        background: #fc9709;
-      }
-
-      .icon-danrenchuang {
-        background: #2d8558;
       }
     }
   }

@@ -31,7 +31,7 @@
           <view style="color: red" class="system-content-right-item">当前已经是最新版本</view>
         </view>
         <view v-if="current === 'data'">
-          <view class="system-content-right-item1">病人信息缓存版本</view>
+          <view class="system-content-right-item1">信息缓存版本</view>
           <view class="system-content-right-item1">系统日志</view>
           <view class="system-content-right-item1 order-detail-top-content order-detail-status">
             <view
@@ -90,6 +90,9 @@
         removeUserInfo: 'user/removeUserInfo',
         removeBaseUrl: 'user/removeBaseUrl'
       }),
+      /**
+       *  获取系统属性
+       */
       getSysProperty() {
         // #ifdef APP-PLUS
         plus.runtime.getProperty(plus.runtime.appid, info => {

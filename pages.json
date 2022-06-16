@@ -47,13 +47,6 @@
       }
     },
     {
-      "path": "pages/ip-info-note/ip-info-note",
-      "style": {
-        "navigationBarTitleText": "快记",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
       "path": "pages/ip-message/ip-message",
       "style": {
         "navigationBarTitleText": "消息",

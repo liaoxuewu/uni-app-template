@@ -17,7 +17,7 @@ export default {
     logo: '/static/logo.png', // 左侧 Logo
     links: [
       {
-        text: '患者',
+        text: '',
         lang: 'zh-Hans'
       }
     ]

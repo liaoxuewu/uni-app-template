@@ -23,7 +23,7 @@ export default {
     }
   ) {
     return POST({
-      url: body.baseUrl + '/login/Login_CF',
+      url: body.baseUrl + '/login',
       ...body,
       data: {
         ...body.data

@@ -3,13 +3,6 @@
  * @Date: 2021-08-02 09:40:23
  * @Description: 缓存信息接口
  */
-
-import { POST } from '@/common/api/request.js'
-import store from '../../../store'
-
-// const baseUrl = 'http://192.168.21.44:9001/'
-const baseUrl = store.state.user.baseUrl
-
 export default {
   download(filepath, filename) {
     return new Promise((resolve, reject) => {
@@ -45,7 +38,7 @@ export default {
   },
   readFile(file) {
     return new Promise((resolve, reject) => {
-      file = 'file://storage/emulated/0/查房/Patients_产科病区_2.txt'
+      file = 'file://storage/emulated/0/2.txt'
       console.log(file + '读取文件地址')
       plus.io.requestFileSystem(
         plus.io.PUBLIC_DOCUMENTS,

@@ -67,8 +67,8 @@
           }
         ],
         personInfo: '', // 个人信息
-        doctAreaList: [], // 医生所属病区列表信息
-        areaNames: [], // 所有病区名称
+        doctAreaList: [],
+        areaNames: [],
         areaData: '',
         selectImg: {
           // 下来框箭头
@@ -79,8 +79,8 @@
         hospitalObjType: {},
         tabSelectImg: '../../static/select_down.png',
         searchValue: '', // 搜索内容
-        patientData: [], // 病区患者列表信息
-        patientData1: [], // 病区患者列表信息
+        patientData: [],
+        patientData1: [],
         isShowMarquee: false
       }
     },
@@ -108,7 +108,7 @@
             hospcode: this.userInfo.hospitalCode,
             wardcode: this.hospitalObjType.wardCode
           }
-          this.getPatientList(baseParams)
+          this.getList(baseParams)
         }
       }
     },
@@ -148,9 +148,9 @@
             hospcode: this.userInfo.hospitalCode,
             wardcode: this.userInfo.wardcode
           }
-          await Promise.all([this.getDoctAreaList()])
+          await Promise.all([this.getAreaList()])
           // #ifdef APP-PLUS
-          await this.getPatientList(baseParams)
+          await this.getList(baseParams)
           DB.openDB().then(async res => {
             console.log('本地数据库打开。。。')
             const res1 = await this.selectTableData()
@@ -160,12 +160,12 @@
               // DB.closeDatabase()
               this.handlePatientData(res1)
             } else {
-              await this.getPatientList(baseParams)
+              await this.getList(baseParams)
             }
           })
           // #endif
           // #ifdef H5
-          await Promise.all([this.getPatientList(baseParams)])
+          await Promise.all([this.getList(baseParams)])
           // #endif
         } catch (e) {
           console.log(e)
@@ -198,12 +198,12 @@
       },
       // #endif
       /**
-       * @description: 获取医生所属病区列表
-       * @param usercode 医院代码
-       * @param hossn 病区代码
+       * @description: 获取列表
+       * @param usercode
+       * @param hossn
        * @return {*}
        */
-      async getDoctAreaList() {
+      async getAreaList() {
         const baseParams = {
           usercode: this.userInfo.doctcode,
           hossn: this.userInfo.hospitalSn
@@ -238,23 +238,21 @@
         }
       },
       /**
-       * @description: 当前病区负责的患者信息列表
-       * @param hospcode 医院代码
-       * @param wardcode 病区代码
+       * @description: 当前列表
+       * @param hospcode
+       * @param wardcode
        * @return {*}
        */
-      async getPatientList(baseParams) {
+      async getList(baseParams) {
         this.reset()
         const res = await api.loadAreaPatient({
           baseUrl: this.baseUrl,
           params: baseParams
         })
-        if (res.data.code === '200' && res.data.data.length) {
-          this.handlePatientData(res.data.data)
-        }
+        if (res.data.code === '200' && res.data.data.length) {}
       },
       /**
-       *  过敏原是否滚动显示
+       *  是否滚动显示
        */
       allergyScroll() {
         // 生成0 - length值 的数据
@@ -267,9 +265,9 @@
         let textAllergyViews1 = []
         this.$nextTick(async () => {
           textAllergyIds.forEach(async item => {
-            // 过敏原限制宽度
+            // 限制宽度
             textAllergyViews.push(queryViewData(`#textAllergy${item}`))
-            // 过敏原实际宽度
+            // 实际宽度
             textAllergyViews1.push(queryViewData(`#textAllergy${item} span`))
           })
           const arr = await Promise.all(textAllergyViews)
@@ -302,7 +300,7 @@
         this.searchValue = ''
       },
       /**
-       * 选择病区
+       * 选择
        */
       onChangeArea(value) {
         // console.log(value)
@@ -314,9 +312,8 @@
       onClickArea() {
         this.tabSelectImg = '../../static/select_up.png'
       },
-      searchCancel() {},
       /**
-       * 点击进入患者详情页面
+       * 点击进入详情页面
        */
       goToDetail(index) {
       }
@@ -395,7 +392,7 @@
     }
   }
 
-  // 患者列表内容
+  // 列表内容
   .uni-grid-wrap-index {
     padding: 6rpx;
     margin-top: 36rpx;
@@ -511,55 +508,6 @@
           margin-right: 6rpx;
           font-size: 10rpx;
           font-weight: bold;
-        }
-
-        /* 术 */
-        .grid-item-sort-lable1 {
-          background: #feeeee;
-          border: 1rpx solid $uni-label-color;
-          color: $uni-label-color;
-        }
-
-        /* 产 */
-        .grid-item-sort-lable2 {
-          background: #eff8f1;
-          border: 1rpx solid $uni-label-color1;
-          color: $uni-label-color1;
-        }
-
-        /* 儿 */
-        .grid-item-sort-lable3 {
-          background: #e8effe;
-          border: 1rpx solid $uni-label-color2;
-          color: $uni-label-color2;
-        }
-
-        /* 出 */
-        .grid-item-sort-lable4 {
-          background: #f9e4f5;
-          border: 1rpx solid $uni-label-color3;
-          color: $uni-label-color3;
-        }
-
-        /* 入 */
-        .grid-item-sort-lable5 {
-          background: #e4f9f7;
-          border: 1rpx solid $uni-label-color4;
-          color: $uni-label-color4;
-        }
-
-        /* 危 */
-        .grid-item-sort-lable6 {
-          background: #fdf0e4;
-          border: 1rpx solid $uni-label-color5;
-          color: $uni-label-color5;
-        }
-
-        /* 孕 */
-        .grid-item-sort-lable7 {
-          background: #f0f0ff;
-          border: 1rpx solid $uni-label-color6;
-          color: $uni-label-color6;
         }
       }
     }

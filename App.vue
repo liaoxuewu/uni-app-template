@@ -74,8 +74,6 @@
       },
       /**
        * @description: 获取版本信息
-       * @param usercode 医院代码
-       * @param wardcode 病区代码
        * @return {*}
        */
       async getVersion() {
@@ -83,10 +81,7 @@
         const version = uni.getStorageSync('uni_version')
         uni.removeStorageSync('uni_version')
         console.log('缓存的版本号' + version)
-        const baseParams = {
-          hospcode: this.userInfo.hospitalCode,
-          wardcode: this.userInfo.wardcode
-        }
+        const baseParams = {}
         // 1.获取版本
         const res = await api.GetPatientVersion({
           params: baseParams
@@ -103,8 +98,8 @@
             // 版本号存入缓存
             uni.setStorageSync('uni_version', res.data.data.version)
             const res1 = await api.download(
-              'D:\\workspace\\JAVA\\CF\\Patients/2022-04-19/产科病区/Patients_产科病区_2.txt',
-              'Patients_产科病区_2.txt'
+              'D:\\workspace\\JAVA\\CF\\Patients/2022-04-19/2.txt',
+              '2.txt'
             )
             console.log('下载文件返回res' + res1)
             // 3.判断有无文件
